@@ -45,6 +45,16 @@ cp .env.example .env
 
 Load dev environment explicitly with `uv run --env-file .env` (uv does not auto-load `.env`).
 
+## Log Format
+
+Log lines use a compact format — no milliseconds, 3-char level abbreviations, pipe separators:
+
+```
+2025-03-15 14:22:01 | INF | myapp.app:main:42 | Hello from myapp!
+```
+
+Level abbreviations: `TRC` `DBG` `INF` `SUC` `WRN` `ERR` `CRT`
+
 ## Testing
 
 Run tests:

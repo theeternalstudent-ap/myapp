@@ -31,3 +31,13 @@ uv run python -m myapp
 | `LOG_FILE`  | `app.log`  | Path to the log file                 |
 
 Copy `.env.example` to `.env` for development defaults, then run with `uv run --env-file .env`.
+
+## Log Format
+
+Log lines use a compact format — no milliseconds, 3-char level abbreviations, pipe separators:
+
+```
+2025-03-15 14:22:01 | INF | myapp.app:main:42 | Hello from myapp!
+```
+
+Level abbreviations: `TRC` `DBG` `INF` `SUC` `WRN` `ERR` `CRT`

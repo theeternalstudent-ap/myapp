@@ -1,4 +1,4 @@
-# myapp
+# second-brain
 
 ## Installation
 
@@ -6,28 +6,30 @@ Clone the repository and install dependencies:
 
 ```bash
 git clone <repo-url>
-cd myapp
+cd second-brain
 uv sync
 ```
 
 ## Usage
 
-Via the CLI entrypoint:
+The CLI exposes three subcommands:
 
 ```bash
-uv run myapp
+uv run second_brain new "My brilliant idea"   # create a note
+uv run second_brain list                      # list notes (newest first)
+uv run second_brain show 1                    # print the contents of note 1
 ```
 
-With dev environment:
+With dev environment variables loaded:
 
 ```bash
-uv run --env-file .env myapp
+uv run --env-file .env second_brain new "My brilliant idea"
 ```
 
 Via Python module:
 
 ```bash
-uv run python -m myapp
+uv run python -m second_brain new "My brilliant idea"
 ```
 
 ## Environment Variables
@@ -38,22 +40,23 @@ Copy `.env.example` to `.env` for development defaults:
 cp .env.example .env
 ```
 
-| Variable    | Default    | Description                                     |
-|-------------|------------|-------------------------------------------------|
-| `LOG_LEVEL` | `INFO`     | Console log level (set to DEBUG in `.env` for verbose output) |
-| `LOG_FILE`  | `app.log`  | Path to the log file                            |
+Note: `uv run --env-file .env` loads the dev environment explicitly — there is no auto-loading.
 
-Load dev environment explicitly with `uv run --env-file .env` (uv does not auto-load `.env`).
+| Variable            | Default            | Description                                          |
+|---------------------|--------------------|------------------------------------------------------|
+| `LOG_LEVEL`         | `INFO`             | Console log level. Set to `DEBUG` in `.env` for verbose output. |
+| `LOG_FILE`          | `app.log`          | Path to the log file.                                |
+| `SECOND_BRAIN_DIR`  | `~/second_brain/`  | Directory where notes are stored.                    |
 
 ## Log Format
 
-Log lines use a compact format — no milliseconds, 3-char level abbreviations, pipe separators:
+Stderr and the log file share the same compact, pipe-separated layout:
 
 ```
-2025-03-15 14:22:01 | INF | myapp.app:main:42 | Hello from myapp!
+2026-05-06 14:32:01 | INF | second_brain.app:main:29 | Hello from second_brain!
 ```
 
-Level abbreviations: `TRC` `DBG` `INF` `SUC` `WRN` `ERR` `CRT`
+Levels are abbreviated to three characters (`DBG`, `INF`, `WRN`, `ERR`, `CRT`) and the timestamp is seconds-precision.
 
 ## Testing
 

@@ -1,5 +1,5 @@
-site_name: myapp
-site_description: Documentation for myapp
+site_name: second-brain
+site_description: Documentation for second-brain
 
 theme:
   name: material

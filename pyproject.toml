@@ -1,17 +1,18 @@
+[project]
+name = "second-brain"
+version = "0.0.1"
+requires-python = ">=3.13"
+dependencies = [
+    "click>=8.1,<9",
+    "loguru>=0.7",
+]
+
 [build-system]
 requires = ["uv_build>=0.10.9,<0.11.0"]
 build-backend = "uv_build"
 
-[project]
-name = "myapp"
-version = "0.0.1"
-requires-python = ">=3.13"
-dependencies = [
-    "loguru",
-]
-
 [project.scripts]
-myapp = "myapp.app:main"
+second_brain = "second_brain.cli:cli"
 
 [dependency-groups]
 dev = [

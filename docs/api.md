@@ -1,5 +1,5 @@
 # API Reference
 
-::: myapp
+::: second_brain
     options:
       show_submodules: true

@@ -1,10 +1,10 @@
-# myapp
+# second-brain
 
-Welcome to the **myapp** documentation.
+Welcome to the **second-brain** documentation.
 
 ## Overview
 
-myapp is a Python application.
+second-brain is a Python application.
 
 ## Quick Links
 

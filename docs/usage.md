@@ -10,34 +10,42 @@ uv sync
 
 ## Running
 
-Via the CLI entrypoint:
+The CLI exposes three subcommands:
 
 ```bash
-uv run myapp                          # production defaults
-uv run --env-file .env myapp          # dev settings
+uv run second_brain new "My brilliant idea"   # create a note
+uv run second_brain list                      # list notes (newest first)
+uv run second_brain show 1                    # print the contents of note 1
+```
+
+With dev settings loaded:
+
+```bash
+uv run --env-file .env second_brain new "My brilliant idea"
 ```
 
 Or as a Python module:
 
 ```bash
-uv run python -m myapp
+uv run python -m second_brain new "My brilliant idea"
 ```
 
 ## Environment Variables
 
-| Variable    | Default    | Description                          |
-|-------------|------------|--------------------------------------|
-| `LOG_LEVEL` | `INFO`     | Console log level (DEBUG, INFO, …)   |
-| `LOG_FILE`  | `app.log`  | Path to the log file                 |
+| Variable            | Default            | Description                          |
+|---------------------|--------------------|--------------------------------------|
+| `LOG_LEVEL`         | `INFO`             | Console log level (DEBUG, INFO, …)   |
+| `LOG_FILE`          | `app.log`          | Path to the log file                 |
+| `SECOND_BRAIN_DIR`  | `~/second_brain/`  | Directory where notes are stored     |
 
 Copy `.env.example` to `.env` for development defaults, then run with `uv run --env-file .env`.
 
 ## Log Format
 
-Log lines use a compact format — no milliseconds, 3-char level abbreviations, pipe separators:
+Stderr and the log file share the same compact, pipe-separated layout:
 
 ```
-2025-03-15 14:22:01 | INF | myapp.app:main:42 | Hello from myapp!
+2026-05-06 14:32:01 | INF | second_brain.app:main:29 | Hello from second_brain!
 ```
 
-Level abbreviations: `TRC` `DBG` `INF` `SUC` `WRN` `ERR` `CRT`
+Levels are abbreviated to three characters (`DBG`, `INF`, `WRN`, `ERR`, `CRT`) and the timestamp is seconds-precision.
